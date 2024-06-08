@@ -1,6 +1,7 @@
 import esbuild from "esbuild";
 import process from "process";
 import builtins from "builtin-modules";
+import sandbox from "../../sandbox/index.js";
 
 const prod = process.argv[2] === "production";
 
@@ -14,6 +15,7 @@ const context = await esbuild.context({
     sourcemap: "inline",
     sourcesContent: !prod,
     treeShaking: true,
+    plugins: [sandbox([])],
     outfile: "build/main.js",
 });
 

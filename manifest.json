@@ -1,6 +1,6 @@
 {
-    "id": "obsidian-spaced-repetition",
-    "name": "Spaced Repetition",
+    "id": "obsidian-spaced-repetition-eddort",
+    "name": "Spaced Repetition (by Eddort)",
     "version": "1.12.4",
     "minAppVersion": "0.15.4",
     "description": "Fight the forgetting curve by reviewing flashcards & entire notes.",
