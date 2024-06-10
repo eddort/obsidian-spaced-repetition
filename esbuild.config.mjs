@@ -1,7 +1,7 @@
 import esbuild from "esbuild";
 import process from "process";
 import builtins from "builtin-modules";
-import { sandboxifyEsbuild } from "../../sandbox/index.js";
+import { wrapSandboxEsbuild } from "../../sandbox/index.js";
 
 const prod = process.argv[2] === "production";
 
@@ -10,12 +10,13 @@ const context = await esbuild.context({
     bundle: true,
     external: ["obsidian", "electron", ...builtins],
     format: "cjs",
-    target: "es2018",
+    target: "es6",
     logLevel: "info",
     sourcemap: "inline",
     sourcesContent: !prod,
     treeShaking: true,
-    plugins: [sandboxifyEsbuild([])],
+    plugins: [wrapSandboxEsbuild()],
+    write: false,
     outfile: "build/main.js",
 });
 
